@@ -1,5 +1,5 @@
 <?php 
-include_once('initialize.php');
+require_once('initialize.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,6 +16,6 @@ include('./shared/header.php')
 <section>
 </section>
   
-  
+
 </body>
 </html>
