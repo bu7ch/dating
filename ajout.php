@@ -58,6 +58,8 @@
               }
               ?>
             </select>
+            OU : ajouter un sport à la liste <input type="text" name="nomsport" size="30"/>
+            <input type="submit" name="ajout" value="ajouter"/>
           </td>
         </tr>
         <tr>
@@ -84,3 +86,35 @@
 <a href="index.php" title="Accueil">
   <button type="button"> Accueil</button>
 </a>
+<?php 
+ if(isset($_POST['envoie'])){
+  //  insert dans personne
+  $req_pers="INSERT INTO personne(id_personne,nom,prenom,depart,mail) VALUES
+  (NULL, '".$_POST['nom']."','".$_POST['prenom']."','".$_POST['depart']."','".$_POST['mail']."')";
+  if($connexion->query($req_pers)) {
+    $id_personne=$connexion->lastInsertId();
+  }
+  // insertion dans la table pratique
+  $id_sport = $_POST['design'];
+  $niveau = $_POST['niveau'];
+  $req_pratique = "INSERT INTO pratique (id_personne, id_sport, niveau) VALUES
+  ('$id_personne', '$id_sport','$niveau')";
+  if($connexion->query($req_pratique)){
+    echo "<a href=\"recherche.php\" title=\"Recherche\">
+            <button type=\"button\">Rechercher des partenaires</button>
+          </a>
+          <br>";
+    echo "Votre numero d'enregistrement :'.$id_personne.'<br>";
+  }
+ }
+//  Ajout de sport 
+if (isset($_POST['ajout'])) {
+  $req_sport = 'INSERT INTO sport (id_sport, design) VALUES 
+  (NULL,"'.$_POST['nomsport'].'")';
+  if ($connexion->query($req_sport)) {
+   echo "<div>
+   DONNEES INSEREES dans sport
+   </div>";
+  }
+}
+?>
