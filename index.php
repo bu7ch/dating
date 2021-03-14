@@ -1,5 +1,5 @@
 <?php 
-require_once('initialize.php');
+ require_once('initialize.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,11 +11,11 @@ require_once('initialize.php');
 </head>
 <body>
 <?php 
-include('./shared/header.php')
+include('./shared/header.php');
 ?>
 <section>
 </section>
   
-
+<?php  include('./shared/footer.php');?>
 </body>
 </html>

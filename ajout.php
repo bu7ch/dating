@@ -1,6 +1,7 @@
 <?php 
-// require_once('./initialze.php');
-include_once('./shared/header.php');
+ require_once('initialize.php');
+?>
+<?php include('./shared/header.php');
 ?>
 
 <form action="ajout.php" method="post">
@@ -47,8 +48,6 @@ include_once('./shared/header.php');
               <?php 
               // Creation dynamique de la liste de sélection
               // connexion
-               $connexion = new PDO('mysql:host=localhost;dbname=dating;charset=utf8','root','root');
-              //  FIXME: Try to connect once
               // Lecture de la table sport
               $requete="SELECT id_sport, design FROM sport ORDER BY design";
               $result=$connexion->query($requete);
@@ -61,10 +60,27 @@ include_once('./shared/header.php');
             </select>
           </td>
         </tr>
+        <tr>
+        <td>Niveau : </td>
+              <td>
+              <select name="niveau">
+                <option value="1">Débutant</option>
+                <option value="2">Confirmé</option>
+                <option value="3">Pro</option>
+                <option value="4">Supporter</option>
+              </select>
+              </td>
+        </tr>
+        <td>
+              <input type="submit" name="envoie" value="Envoyer" />
+        </td>
+        <td>
+              <input type="reset" name="efface" value="Effacer" />
+        </td>
       </tbody>
     </table>
   </fieldset>
-<?php 
-var_dump($connexion)
-?>
 </form>
+<a href="index.php" title="Accueil">
+  <button type="button"> Accueil</button>
+</a>
