@@ -41,24 +41,26 @@ include_once('./shared/header.php');
         <tr>
           <td>Département : </td>
           <td>
-            <select name="NULL" >Choississez!</select>
+            <select name="depart" Choississez!>
+            <option name="NULL" >Choississez!</option>
               <?php 
               // Creation dynmique de la liste de sélection du departement
               //connexion
               $result = $connexion->query('select depart from personne');
               if ($result) {
-                while($row=$result->fetchAll()) {
+                while($row=$result->fetch()) {
                   $tabdepart[] = $row[0];
                 }
                 //Eviter les doublons
                 $tabdepart = array_unique($tabdepart);
                 sort($tabdepart);
-                for ($i=0; $i < count($tabdepart); $i++) { 
-                  echo '<option value='.$tabdepart[$i].'>'.$tabdepart[$i].'</option>';
+                $count = count($tabdepart);
+                for ($i=0; $i < $count; $i++) { 
+                  echo "<option value=". $tabdepart[$i] . ">" . $tabdepart[$i] . "</option>";
                 }
               } 
               ?>
-            </select>
+              </select>
           </td>
         </tr>
         <td>
@@ -71,5 +73,4 @@ include_once('./shared/header.php');
   </table>
 </fieldset>
 <?php 
-var_dump($tabdepart);
 ?>
