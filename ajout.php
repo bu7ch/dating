@@ -104,7 +104,7 @@
             <button type=\"button\">Rechercher des partenaires</button>
           </a>
           <br>";
-    echo "Votre numero d'enregistrement :'.$id_personne.'<br>";
+    echo "Votre numero d'enregistrement :'$id_personne'<br>";
   }
  }
 //  Ajout de sport 
