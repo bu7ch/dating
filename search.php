@@ -51,6 +51,7 @@ include_once('./shared/header.php');
               $result = $connexion->query('select depart from personne');
               if ($result) {
                 while($row=$result->fetch()) {
+                  
                   $tabdepart[] = $row[0];
                 }
                 //Eviter les doublons
@@ -102,4 +103,7 @@ if (isset($_POST['envoie'])) {
   }
 }
 
+?>
+
+<?php 
 ?>
